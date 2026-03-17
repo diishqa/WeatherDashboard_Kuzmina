@@ -2,6 +2,7 @@ package com.kuzmina.weatherdashboard_kuz
 
 import android.R
 import android.os.Bundle
+import android.widget.GridLayout
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -33,6 +34,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -103,6 +105,12 @@ fun WeatherDashboardScreen (
             enabled = !weatherState.isLoading
         ) {
             Text(text = if (weatherState.isLoading) "Loading..." else "� Refresh Weather")
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedButton(
+            onClick = { viewModel.toggleErrorSimulation() }
+        ) {
+            Text(text = "⚠ Simulate Error")
         }
         if (weatherState.error != null) {
             Spacer(modifier = Modifier.height(16.dp))
