@@ -1,17 +1,13 @@
 package com.kuzmina.weatherdashboard_kuz.data
 
+import android.health.connect.datatypes.units.Temperature
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
-suspend fun fetchTemperature(): Int {
-    delay(2000)
-    return Random.nextInt(15, 35)
-}
-suspend fun fetchHumidity(): Int {
-    delay(1500)
-    return Random.nextInt(40, 80)
-}
-suspend fun fetchWindSpeed(): Int {
-    delay(1000)
-    return Random.nextInt(0, 20)
-}
+data class WeatherData(
+    val temperature: Int? = null,
+    val humidity: Int? = null,
+    val windSpeed: Int? = null,
+    val isLoading: Boolean = false,
+    val error: String? = null
+)
